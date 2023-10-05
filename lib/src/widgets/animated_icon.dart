@@ -10,6 +10,7 @@ class AnimatedIconButton extends StatefulWidget {
     super.key,
     required this.tooltip,
     required this.onPressed,
+    required this.enabled,
     required this.controller,
     required this.icon,
     this.loadingColor,
@@ -20,6 +21,7 @@ class AnimatedIconButton extends StatefulWidget {
   final Color? color;
   final Color? loadingColor;
   final VoidCallback onPressed;
+  final bool enabled;
   final AnimationController controller;
   final IconData icon;
 
@@ -189,7 +191,7 @@ class _AnimatedIconButtonState extends State<AnimatedIconButton>
             child: child,
           ),
           child: InkWell(
-            onTap: !_isLoading ? widget.onPressed : null,
+            onTap: _isLoading || !widget.enabled ? null : widget.onPressed,
             splashColor: buttonTheme.splashColor,
             customBorder: buttonTheme.shape,
             onHighlightChanged: (value) => setState(() => _hover = value),

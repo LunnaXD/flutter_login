@@ -600,6 +600,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             scale: _buttonScaleAnimation,
             child: SignInButton(
               loginProvider.button!,
+              enabled: buttonEnabled,
               onPressed: () => _loginProviderSubmit(
                 loginProvider: loginProvider,
               ),
@@ -633,6 +634,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
                   icon: loginProvider.icon!,
                   controller: _providerControllerList[index],
                   tooltip: loginProvider.label,
+                  enabled: buttonEnabled,
                   onPressed: () => _loginProviderSubmit(
                     control: _providerControllerList[index],
                     loginProvider: loginProvider,
